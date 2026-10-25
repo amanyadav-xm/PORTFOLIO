@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: aman-portfolio
+    runtime: node
+    plan: starter            # persistent disks need a paid plan
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: ADMIN_PASSWORD
+        sync: false           # you type this in the Render dashboard
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: DATA_DIR
+        value: /var/data
+    disk:
+      name: portfolio-data
+      mountPath: /var/data
+      sizeGB: 1

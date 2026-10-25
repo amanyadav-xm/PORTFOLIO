@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aman Yadav | Personal Portfolio</title>
+<style>
+:root{--bg:#f3f7fc;--card:#fff;--tx:#0d1b2e;--mu:#52627a;--ac:#0b6bdc;--bd:#d6e0ee;--chip:#e6eef9;--on:#fff;--grid:rgba(11,107,220,.06);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1020;--card:#121a30;--tx:#e6edf7;--mu:#8b9bb8;--ac:#22d3ee;--bd:#1f2a44;--chip:#17213a;--on:#06121f;--grid:rgba(34,211,238,.06);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b1020;--card:#121a30;--tx:#e6edf7;--mu:#8b9bb8;--ac:#22d3ee;--bd:#1f2a44;--chip:#17213a;--on:#06121f;--grid:rgba(34,211,238,.06);color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.65 Georgia,"Times New Roman",serif}
+h1,h2,h3,nav,button,input,textarea,.chip,.lbl{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+nav{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:1px solid var(--bd);display:flex;gap:18px;padding:12px 20px;overflow-x:auto;z-index:5;align-items:center}
+nav a{color:var(--mu);text-decoration:none;font-size:14px;white-space:nowrap}
+nav a:hover{color:var(--ac)}
+nav .sp{flex:1}
+main{max-width:920px;margin:0 auto;padding:0 20px 80px}
+.hero{padding:72px 0 40px}
+.hero h1{font-size:clamp(36px,7vw,64px);line-height:1.05;margin:0 0 12px;letter-spacing:-.02em}
+.hero p{font-size:20px;color:var(--mu);margin:0;max-width:600px}
+section{padding:36px 0;border-top:1px solid var(--bd)}
+h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);margin:0 0 18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--chip);border-radius:99px;padding:5px 13px;font-size:14px;display:inline-flex;gap:6px;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;overflow:hidden}
+.card .b{padding:16px}
+.card img{width:100%;height:160px;object-fit:cover;display:block;background:var(--chip)}
+.card h3{margin:0 0 6px;font-size:18px}
+.card p{margin:0 0 10px;color:var(--mu);font-size:15px}
+.lbl{font-size:12px;color:var(--mu);margin:0 0 8px;text-transform:uppercase;letter-spacing:.08em}
+.col ul{margin:0;padding:0;list-style:none}
+.col li{padding:7px 0;border-bottom:1px dashed var(--bd);display:flex;justify-content:space-between;gap:8px}
+a.btn,button{background:var(--ac);color:var(--on);border:0;border-radius:8px;padding:9px 16px;font-size:14px;cursor:pointer;text-decoration:none;display:inline-block}
+button.ghost{background:var(--chip);color:var(--tx)}
+button.x{background:none;color:var(--mu);padding:0 4px;font-size:16px}
+input,textarea{width:100%;background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:9px 11px;font-size:15px;margin:0 0 8px}
+.row{display:flex;gap:8px}.row input{margin:0}
+.ed{display:none}.editing .ed{display:block}.editing .vw-only{display:none}
+.bar{background:var(--chip);border-radius:10px;padding:10px 14px;font:14px system-ui,sans-serif;margin:16px 0;display:none}
+.editing .bar{display:block}
+#toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:#222;color:#fff;padding:9px 16px;border-radius:99px;font:14px system-ui;display:none;z-index:9}
+.mu{color:var(--mu)}
+body{overflow-x:hidden;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:40px 40px}
+h2,.lbl{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+#pg{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--ac),#8b5cf6);z-index:20;transition:width .1s}
+.hero{position:relative}
+.hero h1,.hero p{position:relative;z-index:1;animation:up .9s cubic-bezier(.2,.8,.2,1) both}
+.hero p{animation-delay:.2s}
+.grad{background:linear-gradient(90deg,var(--ac),#8b5cf6,#34d399,var(--ac));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:up .9s both,shift 8s linear infinite!important}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.35;z-index:0;pointer-events:none}
+.b1{width:260px;height:260px;background:var(--ac);top:-30px;left:-60px;animation:float 9s ease-in-out infinite}
+.b2{width:220px;height:220px;background:#6c5ce7;right:0;top:60px;animation:float 11s ease-in-out infinite reverse}
+.orbit{position:absolute;right:-10px;top:20px;width:min(300px,42vw);z-index:0;pointer-events:none}
+.orbit g{transform-origin:100px 100px;animation:spin 18s linear infinite}
+.orbit .g2{animation-duration:30s;animation-direction:reverse}
+.orbit .core{transform-origin:100px 100px;animation:pulse 3s ease-in-out infinite}
+.rv{opacity:0;transform:translateY(32px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+.card{transition:transform .3s,box-shadow .3s,border-color .3s}
+.card:hover{transform:translateY(-6px);box-shadow:0 14px 30px rgba(34,211,238,.2);border-color:var(--ac)}
+.card img{transition:transform .5s}.card:hover img{transform:scale(1.06)}
+.card{overflow:hidden}
+.chip{transition:transform .2s,background .2s,color .2s}
+.chip:hover{transform:scale(1.1) rotate(-2deg);background:var(--ac);color:var(--on)}
+#skills .chip:nth-child(odd){animation:bob 4s ease-in-out infinite}
+#skills .chip:nth-child(even){animation:bob 5s ease-in-out .8s infinite}
+a.btn,button{transition:transform .2s,box-shadow .2s}
+a.btn:hover,button:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(34,211,238,.3)}
+nav a{position:relative}nav a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:var(--ac);transition:width .3s}nav a:hover::after{width:100%}
+h2{display:flex;align-items:center;gap:8px}h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--bd),transparent)}
+#about h2::before{content:"👋"}#skills h2::before{content:"⚡"}#journey h2::before{content:"🌱"}#projects h2::before{content:"🚀"}#resume h2::before{content:"📄"}#contact h2::before{content:"✉️"}
+.col:nth-child(1) li{border-left:3px solid #3bb273;padding-left:8px}.col:nth-child(2) li{border-left:3px solid var(--ac);padding-left:8px}.col:nth-child(3) li{border-left:3px solid #6c5ce7;padding-left:8px}
+.abt{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+.avatar{width:150px;height:150px;border-radius:50%;object-fit:cover;border:4px solid var(--ac);box-shadow:0 0 0 6px var(--chip);animation:bob 5s ease-in-out infinite}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.gi{margin:0;position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/3;background:var(--chip)}
+.gi img{width:100%;height:100%;object-fit:cover;cursor:zoom-in;transition:transform .4s}.gi:hover img{transform:scale(1.08)}
+.gi .del{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.65);color:#fff;border-radius:50%;width:26px;height:26px;padding:0}
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:30;cursor:zoom-out;padding:20px}#lb img{max-width:100%;max-height:100%;border-radius:10px}
+#gallery h2::before{content:"🖼️"}
+@keyframes up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes shift{to{background-position:300% 0}}
+@keyframes float{50%{transform:translate(30px,30px) scale(1.15)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{50%{transform:scale(1.25)}}
+@keyframes bob{50%{transform:translateY(-5px)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav id="nav">
+<a href="#about">About</a><a href="#skills">Skills</a><a href="#journey">Learning</a><a href="#projects">Projects</a><a href="#gallery">Gallery</a><a href="#resume">Resume</a><a href="#contact">Contact</a>
+<span class="sp"></span><button id="tg" class="ghost" style="display:none">✏️ Edit site</button>
+</nav>
+<main id="app"></main>
+<div id="pg"></div><div id="lb"></div><div id="toast"></div>
+<script>
+const D={name:"Aman Yadav",tagline:"Python Developer & Data Analyst | Aspiring Machine Learning Engineer",about:"Hi, I’m Aman Yadav — Python Developer & Data Analyst | Aspiring Machine Learning Engineer.\n\nI write clean, modular Python to automate workflows and transform raw datasets into clear, actionable insights. With a strong foundation in core Python development, data wrangling, and exploratory data analysis (EDA), I am actively expanding my work into machine learning and AI, building the mathematical and algorithmic foundation to solve data-driven problems.\n\nExplore my projects below to see my code, analytical workflows, and latest ML experiments in action.",email:"",github:"",linkedin:"",skills:["Python","Data Wrangling","Exploratory Data Analysis","Workflow Automation"],learnt:["Core Python development","Data wrangling","Exploratory data analysis (EDA)"],learning:["Machine learning","Math & algorithms behind ML"],will:["AI & advanced ML projects"],projects:[],photo:"",gallery:[],resume:null};
+let data=JSON.parse(JSON.stringify(D)),edit=false,owner=false,ref=null,assets=null,timer;
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safe=u=>/^(https?:\/\/|\/uploads\/|mailto:)/.test(u||"")?u:"#";
+function toast(m){const t=$("#toast");t.textContent=m;t.style.display="block";setTimeout(()=>t.style.display="none",2200)}
+function save(){if(!owner)return;clearTimeout(timer);timer=setTimeout(()=>fetch("/api/data",{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)}).then(r=>{if(!r.ok)throw 0}).then(()=>toast("Saved ✓")).catch(()=>toast("Couldn’t save")),500)}
+const LISTS={skills:["Skills","Add a skill"],};
+function listBlock(k,ph){
+ const items=data[k]||[];
+ return `<ul class="chips" style="list-style:none;padding:0;margin:0 0 10px">${items.map((x,i)=>`<li class="chip">${esc(x)}<button class="x ed" data-del="${k}:${i}">×</button></li>`).join("")||'<li class="mu vw-only">Nothing here yet.</li>'}</ul>
+ <div class="ed row"><input data-new="${k}" placeholder="${ph}"><button data-add="${k}">Add</button></div>`}
+function col(k,title,ph){
+ const items=data[k]||[];
+ return `<div class="col"><p class="lbl">${title}</p><ul>${items.map((x,i)=>`<li><span>${esc(x)}</span><button class="x ed" data-del="${k}:${i}">×</button></li>`).join("")||'<li class="mu">—</li>'}</ul>
+ <div class="ed row" style="margin-top:8px"><input data-new="${k}" placeholder="${ph}"><button data-add="${k}">Add</button></div></div>`}
+function render(){
+ const d=data;
+ $("#app").className=edit?"editing":"";
+ $("#app").innerHTML=`
+ <div class="hero"><i class="blob b1"></i><i class="blob b2"></i><svg class="orbit" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="38" fill="none" stroke="var(--ac)" stroke-opacity=".5" stroke-dasharray="4 6"/><circle cx="100" cy="100" r="68" fill="none" stroke="var(--ac)" stroke-opacity=".35"/><circle cx="100" cy="100" r="94" fill="none" stroke="var(--ac)" stroke-opacity=".2" stroke-dasharray="2 8"/><circle class="core" cx="100" cy="100" r="14" fill="var(--ac)"/><g><circle cx="138" cy="100" r="6" fill="#e8a33d"/><circle cx="62" cy="100" r="4" fill="#6c5ce7"/></g><g class="g2"><circle cx="100" cy="32" r="7" fill="#3bb273"/><circle cx="168" cy="100" r="5" fill="var(--ac)"/><circle cx="100" cy="194" r="4" fill="#c13584"/></g></svg><h1 class="grad">${esc(d.name)}</h1><p>${esc(d.tagline)}</p>
+ <div class="ed bar">Edit mode: changes save automatically and only you can see these controls.</div>
+ <div class="ed"><input data-f="name" value="${esc(d.name)}" placeholder="Your name"><input data-f="tagline" value="${esc(d.tagline)}" placeholder="One-line tagline"></div></div>
+ <section id="about"><h2>About me</h2><div class="abt">${d.photo?`<img class="avatar" src="${safe(d.photo)}" alt="Profile photo">`:""}<div style="flex:1;min-width:220px"><p class="vw-only" style="white-space:pre-wrap;margin:0">${esc(d.about)}</p>
+ <div class="ed"><textarea data-f="about" rows="6">${esc(d.about)}</textarea><p class="lbl">Profile photo</p><input id="phf" type="file" accept="image/*"></div></div></div></section>
+ <section id="skills"><h2>Skills</h2>${listBlock("skills","Add a skill, e.g. Python")}</section>
+ <section id="journey"><h2>My learning journey</h2><div class="grid">${col("learnt","What I’ve learnt","Add something you’ve learnt")}${col("learning","Learning now","Add what you’re learning")}${col("will","Will learn next","Add a future goal")}</div></section>
+ <section id="projects"><h2>Projects</h2><div class="grid">${d.projects.map((p,i)=>`<div class="card">${p.img?`<img src="${safe(p.img)}" alt="">`:""}<div class="b"><h3>${esc(p.title)}</h3><p>${esc(p.desc)}</p>
+ <div class="chips" style="margin-bottom:10px">${(p.tags||[]).map(t=>`<span class="chip">${esc(t)}</span>`).join("")}</div>
+ ${p.link?`<a class="btn" href="${safe(p.link)}" target="_blank" rel="noopener">View project</a>`:""} <button class="x ed" data-delp="${i}">Delete</button></div></div>`).join("")||'<p class="mu vw-only">Projects coming soon.</p>'}</div>
+ <div class="ed card" style="margin-top:16px"><div class="b"><p class="lbl">Add a project</p>
+ <input id="pt" placeholder="Title"><textarea id="pd" rows="3" placeholder="What did you build and learn?"></textarea>
+ <input id="pg" placeholder="Tags, comma separated"><input id="pl" placeholder="Link (https://…)"><input id="pi" type="file" accept="image/*">
+ <button id="pa">Post project</button></div></div></section>
+ <section id="gallery"><h2>Gallery</h2><div class="gal">${(d.gallery||[]).map((g,i)=>`<figure class="gi"><img src="${safe(g)}" alt="" loading="lazy" data-zoom="${i}"><button class="x ed del" data-delg="${i}">×</button></figure>`).join("")||'<p class="mu vw-only">No photos yet.</p>'}</div><div class="ed" style="margin-top:12px"><p class="lbl">Add photos</p><input id="gf" type="file" accept="image/*" multiple></div></section>
+ <section id="resume"><h2>Resume</h2>${d.resume?`<a class="btn" href="${safe(d.resume.url)}" target="_blank" rel="noopener">View resume · ${esc(d.resume.name)}</a>`:'<p class="mu vw-only" style="margin:0">Resume coming soon.</p>'}
+ <div class="ed" style="margin-top:12px"><p class="lbl">Upload resume (PDF)</p><input id="rf" type="file" accept=".pdf,application/pdf"></div></section>
+ <section id="contact"><h2>Get in touch</h2><p>${d.email?`<a class="btn" href="mailto:${esc(d.email)}">Email me</a> `:""}${d.github?`<a class="btn ghost" style="background:var(--chip);color:var(--tx)" href="${safe(d.github)}" target="_blank" rel="noopener">GitHub</a> `:""}${d.linkedin?`<a class="btn ghost" style="background:var(--chip);color:var(--tx)" href="${safe(d.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>`:""}</p>
+ <div class="ed"><input data-f="email" value="${esc(d.email)}" placeholder="Email"><input data-f="github" value="${esc(d.github)}" placeholder="GitHub URL"><input data-f="linkedin" value="${esc(d.linkedin)}" placeholder="LinkedIn URL"></div></section>`;
+ reveal();
+}
+const seen=new Set();
+function reveal(){
+ const rm=matchMedia("(prefers-reduced-motion:reduce)").matches;
+ const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");seen.add(x.target.id);io.unobserve(x.target)}}),{threshold:.1});
+ document.querySelectorAll("#app section").forEach(s=>{if(rm||seen.has(s.id))s.classList.add("in");else{s.classList.add("rv");io.observe(s)}});
+}
+addEventListener("scroll",()=>{const h=document.documentElement;$("#pg").style.width=((h.scrollTop/(h.scrollHeight-h.clientHeight))*100||0)+"%"},{passive:true});
+document.addEventListener("input",e=>{const f=e.target.dataset.f;if(f&&owner){data[f]=e.target.value;save()}});
+document.addEventListener("click",async e=>{
+ if(!owner)return;const t=e.target;
+ if(t.dataset.add){const i=document.querySelector(`input[data-new="${t.dataset.add}"]`);const v=i.value.trim();if(v){data[t.dataset.add]=[...(data[t.dataset.add]||[]),v];save();render()}}
+ if(t.dataset.del){const[k,i]=t.dataset.del.split(":");data[k].splice(+i,1);save();render()}
+ if(t.dataset.delp){data.projects.splice(+t.dataset.delp,1);save();render()}
+ if(t.dataset.delg){data.gallery.splice(+t.dataset.delg,1);save();render()}
+ if(t.id==="pa"){const title=$("#pt").value.trim();if(!title)return toast("Add a title");t.disabled=true;let img="";
+  const f=$("#pi").files[0];if(f&&assets){try{img=(await assets.upload(f)).url}catch{toast("Image upload failed")}}
+  data.projects=[{title,desc:$("#pd").value.trim(),tags:$("#pg").value.split(",").map(s=>s.trim()).filter(Boolean),link:$("#pl").value.trim(),img},...data.projects];save();render()}
+});
+document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.dataset.new){document.querySelector(`button[data-add="${e.target.dataset.new}"]`).click()}});
+document.addEventListener("change",async e=>{
+ const id=e.target.id;
+ if(owner&&(id==="phf"||id==="gf")){const fs=[...e.target.files];if(!fs.length)return;if(!assets)return toast("Upload unavailable");toast("Uploading…");
+  try{if(id==="phf"){data.photo=(await assets.upload(fs[0])).url}else{for(const f of fs){data.gallery=[...(data.gallery||[]),(await assets.upload(f)).url]}}save();render()}catch{toast("Upload failed")}return}
+ if(e.target.id==="rf"&&owner){const f=e.target.files[0];if(!f)return;if(!assets)return toast("Upload unavailable");
+  try{toast("Uploading…");const r=await assets.upload(f);data.resume={url:r.url,name:f.name};save();render()}catch{toast("Upload failed")}}});
+document.addEventListener("click",e=>{const lb=$("#lb");if(e.target.dataset&&e.target.dataset.zoom!==undefined){lb.innerHTML=`<img src="${e.target.src}" alt="">`;lb.style.display="flex"}else if(e.target.closest("#lb"))lb.style.display="none"});
+$("#tg").onclick=()=>{edit=!edit;$("#tg").textContent=edit?"✓ Done":"✏️ Edit site";render()};
+render();
+assets={upload:async f=>{const fd=new FormData();fd.append("file",f);const r=await fetch("/api/upload",{method:"POST",body:fd});if(!r.ok)throw new Error("upload");return r.json()}};
+(async()=>{
+ try{owner=!!(await (await fetch("/api/me")).json()).owner}catch{}
+ if(!owner&&location.hash==="#admin"){const p=prompt("Admin password");if(p){const r=await fetch("/api/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({password:p})});if(r.ok){location.hash="";location.reload();return}alert("Wrong password")}}
+ if(owner){$("#tg").style.display="";const lo=document.createElement("button");lo.className="ghost";lo.textContent="Log out";lo.onclick=async()=>{await fetch("/api/logout",{method:"POST"});location.reload()};$("#tg").after(lo)}
+ try{const d=await(await fetch("/api/data")).json();data={...D,...d};render()}catch{}
+})();
+</script>
+</body>
+</html>
